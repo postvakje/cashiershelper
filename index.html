@@ -3,11 +3,11 @@
 <!-- Simple JavaScript calculator for cashiers at flea markets, bake sales, or other mobile sales.
      written by Chai Wah Wu, September 2017 -->
 
-<p>Adult ticket price: $<input type="text" maxlength="6" size="7" id="adultprice" onkeyup = "checkAdultPrice(event)" value = 20> each</p>
+<p style="font-size:40px;">Adult ticket price: $<input style="font-size:40px;" type="text" maxlength="6" size="7" id="adultprice" onkeyup = "checkAdultPrice(event)" value = 20> each</p>
 
-<p>Children ticket price: $<input type="text" maxlength="6" size="7" id="childrenprice" onkeyup = "checkChildrenPrice(event)" value = 10> each</p>
+<p style="font-size:40px;">Children ticket price: $<input style="font-size:40px;" type="text" maxlength="6" size="7" id="childrenprice" onkeyup = "checkChildrenPrice(event)" value = 10> each</p>
 
-<p>Program book price: $<input type="text" maxlength="6" size="7" id="programprice" onkeyup = "checkProgramPrice(event)" value = 6> each</p>
+<p style="font-size:40px;">Program book price: $<input style="font-size:40px;" type="text" maxlength="6" size="7" id="programprice" onkeyup = "checkProgramPrice(event)" value = 6> each</p>
 
 
 
@@ -187,49 +187,45 @@ function AddMoney(m) {
 <FORM name="CashierHelperCalculator">
  <table border="6"> 
   <tr>   
-    <td colspan="1" style="font-size:30px;"> <font color="blue">Total $</font>
-      <input type="text" style="font-size:30px;" maxlength="6" size="7" name="TotalDisplay" value = 0.00>
+    <td colspan="1" style="font-size:90px;"> <font color="blue">Total $</font>
+      <input type="text" style="font-size:90px;" maxlength="6" size="7" name="TotalDisplay" value = 0.00>
     </td>
   </tr> 
   <tr>
     <td> 
       <table>
-	  <tr> Adult ticket: </tr> 
-	  <tr> <input type="text" maxlength="3" size="4" name="AdultTicketDisplay"></tr> <tr> $</tr>
+	  <tr> <span  style="font-size:40px;">Adult ticket:</span> </tr> 
+	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="AdultTicketDisplay"></tr> <tr> $</tr>
        <tr>
-	   <input type="text" maxlength="5" size="7" name="AdultTicketTotalDisplay" value = 0.00>
-         <td><input type="button" value="+" OnClick="AddAdultTicket(1)"></td>
-		 <td><input type="button" value="1" OnClick="SetAdultTicket(1)"></td>
-		 <td><input type="button" value="2" OnClick="SetAdultTicket(2)"></td>
-		 <td><input type="button" value="3" OnClick="SetAdultTicket(3)"></td>
-		 <td><input type="button" value="4" OnClick="SetAdultTicket(4)"></td>
-		 <td><input type="button" value="5" OnClick="SetAdultTicket(5)"></td>
-		 <td><input type="button" value="6" OnClick="SetAdultTicket(6)"></td>
+	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="AdultTicketTotalDisplay" value = 0.00>
+         <td><input style="height:40px;width:100px" type="button" value="+" OnClick="AddAdultTicket(1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="-" OnClick="AddAdultTicket(-1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="1" OnClick="SetAdultTicket(1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="2" OnClick="SetAdultTicket(2)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="3" OnClick="SetAdultTicket(3)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="4" OnClick="SetAdultTicket(4)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="5" OnClick="SetAdultTicket(5)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="6" OnClick="SetAdultTicket(6)"></td>
 	   </tr>
-	   <tr>
-         <td><input type="button" value="-" OnClick="AddAdultTicket(-1)"></td>
-       </tr>
       </table>
 	 </td>
 	</tr>
 	<tr>
 	<td>
 	  <table>
-	  <tr> Children ticket: </tr> 
-	  <tr> <input type="text" maxlength="3" size="4" name="ChildrenTicketDisplay"></tr> <tr> $</tr>
+	  <tr> <span  style="font-size:40px;"> Children ticket: </span></tr> 
+	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ChildrenTicketDisplay"></tr> <tr> $</tr>
        <tr>
-	   <input type="text" maxlength="5" size="7" name="ChildrenTicketTotalDisplay" value = 0.00>
-         <td><input type="button" value="+" OnClick="AddChildrenTicket(1)"></td>
-		 <td><input type="button" value="1" OnClick="SetChildrenTicket(1)"></td>
-		 <td><input type="button" value="2" OnClick="SetChildrenTicket(2)"></td>
-		 <td><input type="button" value="3" OnClick="SetChildrenTicket(3)"></td>
-		 <td><input type="button" value="4" OnClick="SetChildrenTicket(4)"></td>
-		 <td><input type="button" value="5" OnClick="SetChildrenTicket(5)"></td>
-		 <td><input type="button" value="6" OnClick="SetChildrenTicket(6)"></td>
+	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="ChildrenTicketTotalDisplay" value = 0.00>
+         <td><input style="height:40px;width:100px" type="button" value="+" OnClick="AddChildrenTicket(1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="-" OnClick="AddChildrenTicket(-1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="1" OnClick="SetChildrenTicket(1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="2" OnClick="SetChildrenTicket(2)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="3" OnClick="SetChildrenTicket(3)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="4" OnClick="SetChildrenTicket(4)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="5" OnClick="SetChildrenTicket(5)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="6" OnClick="SetChildrenTicket(6)"></td>
 	   </tr>
-	   <tr>
-         <td><input type="button" value="-" OnClick="AddChildrenTicket(-1)"></td>
-       </tr>
       </table>
     </td>
     
@@ -237,21 +233,19 @@ function AddMoney(m) {
   <tr>
 	<td>
 	  <table>
-	  <tr> Program Book: </tr> 
-	  <tr> <input type="text" maxlength="3" size="4" name="ProgramBookDisplay"></tr> <tr> $</tr>
+	  <tr> <span  style="font-size:40px;"> Program Book: </span> </tr> 
+	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ProgramBookDisplay"></tr> <tr> $</tr>
        <tr>
-	   <input type="text" maxlength="5" size="7" name="ProgramBookTotalDisplay" value = 0.00>
-         <td><input type="button" value="+" OnClick="AddProgramBook(1)"></td>
-		 <td><input type="button" value="1" OnClick="SetProgramBook(1)"></td>
-		 <td><input type="button" value="2" OnClick="SetProgramBook(2)"></td>
-		 <td><input type="button" value="3" OnClick="SetProgramBook(3)"></td>
-		 <td><input type="button" value="4" OnClick="SetProgramBook(4)"></td>
-		 <td><input type="button" value="5" OnClick="SetProgramBook(5)"></td>
-		 <td><input type="button" value="6" OnClick="SetProgramBook(6)"></td>
+	   <input style="font-size:40px;"type="text" maxlength="5" size="7" name="ProgramBookTotalDisplay" value = 0.00>
+         <td><input style="height:40px;width:100px" type="button" value="+" OnClick="AddProgramBook(1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="-" OnClick="AddProgramBook(-1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="1" OnClick="SetProgramBook(1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="2" OnClick="SetProgramBook(2)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="3" OnClick="SetProgramBook(3)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="4" OnClick="SetProgramBook(4)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="5" OnClick="SetProgramBook(5)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="6" OnClick="SetProgramBook(6)"></td>
 	   </tr>
-	   <tr>
-         <td><input type="button" value="-" OnClick="AddProgramBook(-1)"></td>
-       </tr>
       </table>
     </td>
     
@@ -264,28 +258,28 @@ function AddMoney(m) {
   <td>
   <table>
   <tr>    
-		<span  style="font-size:30px;"> <font color="purple">Cash $</font></span>
-      <input type="text" style="font-size:30px;" maxlength="6" size="7" id="moneyreceived" onkeyup = "ProcessTransaction()" value = 0 >
+		<span  style="font-size:90px;"> <font color="purple">Cash $</font></span>
+      <input type="text" style="font-size:90px;" maxlength="6" size="7" id="moneyreceived" onkeyup = "ProcessTransaction()" value = 0 >
     
   </tr>  
 <tr>
-         <td><input type="button" value="Clear" OnClick="ClearMoney()"></td>
-		 <td><input type="button" value="+1" OnClick="AddMoney(1)"></td>
-		 <td><input type="button" value="+5" OnClick="AddMoney(5)"></td>
-		 <td><input type="button" value="+10" OnClick="AddMoney(10)"></td>
-		 <td><input type="button" value="+20" OnClick="AddMoney(20)"></td>
-		 <td><input type="button" value="+100" OnClick="AddMoney(100)"></td>
+         <td><input style="height:40px;width:100px" type="button" value="Clear" OnClick="ClearMoney()"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="+1" OnClick="AddMoney(1)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="+5" OnClick="AddMoney(5)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="+10" OnClick="AddMoney(10)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="+20" OnClick="AddMoney(20)"></td>
+		 <td><input style="height:40px;width:100px" type="button" value="+100" OnClick="AddMoney(100)"></td>
 	   </tr>  
   </table>
   </td></tr>
   <tr>   
-    <td colspan="1" style="font-size:30px;"> <font color="red">Chg $</font>
-      <input type="text" style="font-size:30px;" maxlength="6" size="7" id="changereturned" value = 0.00>
+    <td colspan="1" style="font-size:90px;"> <font color="red">Chg $</font>
+      <input type="text" style="font-size:90px;" maxlength="6" size="7" id="changereturned" value = 0.00>
     </td>
   </tr>  
   
   </table>
   
 </FORM>
-<p><input type="button" value="CLEAR ALL" OnClick="ClearFields()"></p>
+<p><input style="height:40px;width:100px" type="button" value="CLEAR ALL" OnClick="ClearFields()"></p>
 
