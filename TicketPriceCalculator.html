@@ -188,17 +188,17 @@ function AddMoney(m) {
  <table border="6"> 
   <tr>   
     <td colspan="1" style="font-size:90px;"> <font color="blue">Total $</font>
-      <input type="text" style="font-size:90px;" maxlength="6" size="7" name="TotalDisplay" value = 0.00>
+      <input type="text" style="font-size:90px;" maxlength="6" size="7" name="TotalDisplay" value = 0.00 readonly = "true">
     </td>
   </tr> 
   <tr>
     <td> 
       <table>
 	  <tr> <span  style="font-size:40px;">Adult ticket:</span> </tr> 
-	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="AdultTicketDisplay"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
+	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="AdultTicketDisplay" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
        <tr>
        <tr>
-	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="AdultTicketTotalDisplay" value = 0.00>
+	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="AdultTicketTotalDisplay" value = 0.00 readonly = "true">
          <td><input style="font-size:40px;height:50px;width:100px" type="button" value="+" OnClick="AddAdultTicket(1)"></td>
 		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="-" OnClick="AddAdultTicket(-1)"></td>
 		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="1" OnClick="SetAdultTicket(1)"></td>
@@ -215,10 +215,10 @@ function AddMoney(m) {
 	<td>
 	  <table>
 	  <tr> <span  style="font-size:40px;"> Children ticket: </span></tr> 
-	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ChildrenTicketDisplay"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
+	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ChildrenTicketDisplay" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
        <tr>
        <tr>
-	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="ChildrenTicketTotalDisplay" value = 0.00>
+	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="ChildrenTicketTotalDisplay" value = 0.00 readonly = "true">
          <td><input style="font-size:40px;height:50px;width:100px" type="button" value="+" OnClick="AddChildrenTicket(1)"></td>
 		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="-" OnClick="AddChildrenTicket(-1)"></td>
 		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="1" OnClick="SetChildrenTicket(1)"></td>
@@ -236,9 +236,9 @@ function AddMoney(m) {
 	<td>
 	  <table>
 	  <tr> <span  style="font-size:40px;"> Program Book: </span> </tr> 
-	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ProgramBookDisplay"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
+	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ProgramBookDisplay" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
        <tr>
-	   <input style="font-size:40px;"type="text" maxlength="5" size="7" name="ProgramBookTotalDisplay" value = 0.00>
+	   <input style="font-size:40px;"type="text" maxlength="5" size="7" name="ProgramBookTotalDisplay" value = 0.00 readonly = "true">
          <td><input style="font-size:40px;height:50px;width:100px" type="button" value="+" OnClick="AddProgramBook(1)"></td>
 		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="-" OnClick="AddProgramBook(-1)"></td>
 		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="1" OnClick="SetProgramBook(1)"></td>
@@ -276,7 +276,7 @@ function AddMoney(m) {
   </td></tr>
   <tr>   
     <td colspan="1" style="font-size:90px;"> <font color="red">Change $</font>
-      <input type="text" style="font-size:90px;" maxlength="6" size="7" id="changereturned" value = 0.00>
+      <input type="text" style="font-size:90px;" maxlength="6" size="7" id="changereturned" value = 0.00 readonly = "true">
     </td>
   </tr>  
   
