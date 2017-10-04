@@ -3,160 +3,77 @@
 <!-- Simple JavaScript calculator for cashiers at flea markets, bake sales, or other mobile sales.
      written by Chai Wah Wu, September 2017 -->
 
-<p style="font-size:40px;">Adult ticket price: $<input style="font-size:40px;" type="text" maxlength="6" size="7" id="adultprice" onkeyup = "checkAdultPrice(event)" value = 20> each</p>
-
-<p style="font-size:40px;">Children ticket price: $<input style="font-size:40px;" type="text" maxlength="6" size="7" id="childrenprice" onkeyup = "checkChildrenPrice(event)" value = 10> each</p>
-
-<p style="font-size:40px;">Program book price: $<input style="font-size:40px;" type="text" maxlength="6" size="7" id="programprice" onkeyup = "checkProgramPrice(event)" value = 6> each</p>
-
-
-
 <head>
   <title>Cashier's helper</title>
   <script language='JavaScript'>
   
-function checkAdultPrice(event) {
-		AdultTicketPrice = document.getElementById("adultprice").value;
-		AddAdultTicket(0);
-	
-}
-
-function checkChildrenPrice(event) {
-	
-		ChildrenTicketPrice = document.getElementById("childrenprice").value;
-		AddChildrenTicket(0);
-	
-}
-
-function checkProgramPrice(event) {
-	
-        ProgramBookPrice = document.getElementById("programprice").value;
-		AddProgramBook(0);
-   
-}
 	
 function currencyRound(x) {
 	return (Math.round(x*Math.pow(10,2))/Math.pow(10,2)).toFixed(2);
 }
 	
-function AddAdultTicket(dig)
+function AddTicket(dig,type)
 {
-	NumAdultTicket += dig;
-	if (NumAdultTicket < 0) {
-		NumAdultTicket = 0;
+	NumTicket[type] += dig;
+	if (NumTicket[type] < 0) {
+		NumTicket[type] = 0;
 	}
-	AdultTicketTotal = NumAdultTicket*AdultTicketPrice;	
-	Total = AdultTicketTotal+ChildrenTicketTotal+ProgramBookTotal;
+	TicketTotal[type] = NumTicket[type]*TicketPrice[type];	
+	Total = 0;
+	for (var i = 0; i < TicketType; i++){
+		Total += TicketTotal[i];}
 	document.CashierHelperCalculator.TotalDisplay.value = currencyRound(Total);
-	document.CashierHelperCalculator.AdultTicketTotalDisplay.value = currencyRound(AdultTicketTotal);
-	document.CashierHelperCalculator.AdultTicketDisplay.value = NumAdultTicket;
+	document.getElementById('tickettotal'+type.toString()).value = currencyRound(TicketTotal[type]);
+	document.getElementById('ticket'+type.toString()).value = NumTicket[type];
 	ProcessTransaction()
 }
 
-function SetAdultTicket(dig)
+function SetTicket(dig,type)
 {
-	NumAdultTicket = dig;
-	if (NumAdultTicket < 0) {
-		NumAdultTicket = 0;
+	NumTicket[type] = dig;
+	if (NumTicket[type] < 0) {
+		NumTicket[type] = 0;
 	}
-	AdultTicketTotal = NumAdultTicket*AdultTicketPrice;	
-	Total = AdultTicketTotal+ChildrenTicketTotal+ProgramBookTotal;
+	TicketTotal[type] = NumTicket[type]*TicketPrice[type];	
+	Total = 0;
+	for (var i = 0; i < TicketType; i++){
+		Total += TicketTotal[i];
+		}
 	document.CashierHelperCalculator.TotalDisplay.value = currencyRound(Total);
-	document.CashierHelperCalculator.AdultTicketTotalDisplay.value = currencyRound(AdultTicketTotal);
-	document.CashierHelperCalculator.AdultTicketDisplay.value = NumAdultTicket;
+	document.getElementById('tickettotal'+type.toString()).value = currencyRound(TicketTotal[type]);
+	document.getElementById('ticket'+type.toString()).value = NumTicket[type];
 	ProcessTransaction()
 }
 
-function AddChildrenTicket(dig)
-{
-	NumChildrenTicket += dig;
-	if (NumChildrenTicket < 0) {
-		NumChildrenTicket = 0;
-	}
-	ChildrenTicketTotal = NumChildrenTicket*ChildrenTicketPrice;	
-	Total = AdultTicketTotal+ChildrenTicketTotal+ProgramBookTotal;
-	document.CashierHelperCalculator.TotalDisplay.value = currencyRound(Total);
-	document.CashierHelperCalculator.ChildrenTicketTotalDisplay.value = currencyRound(ChildrenTicketTotal);
-	document.CashierHelperCalculator.ChildrenTicketDisplay.value = NumChildrenTicket;
-	ProcessTransaction()
-}
 
-function SetChildrenTicket(dig)
-{
-	NumChildrenTicket = dig;
-	if (NumChildrenTicket < 0) {
-		NumChildrenTicket = 0;
-	}
-	ChildrenTicketTotal = NumChildrenTicket*ChildrenTicketPrice;	
-	Total = AdultTicketTotal+ChildrenTicketTotal+ProgramBookTotal;
-	document.CashierHelperCalculator.TotalDisplay.value = currencyRound(Total);
-	document.CashierHelperCalculator.ChildrenTicketTotalDisplay.value = currencyRound(ChildrenTicketTotal);
-	document.CashierHelperCalculator.ChildrenTicketDisplay.value = NumChildrenTicket;
-	ProcessTransaction()
-}
-
-function AddProgramBook(dig)
-{
-	NumProgramBook += dig;
-	if (NumProgramBook < 0) {
-		NumProgramBook = 0;
-	}
-	ProgramBookTotal = NumProgramBook*ProgramBookPrice;	
-	Total = AdultTicketTotal+ChildrenTicketTotal+ProgramBookTotal;
-	document.CashierHelperCalculator.TotalDisplay.value = currencyRound(Total);
-	document.CashierHelperCalculator.ProgramBookTotalDisplay.value = currencyRound(ProgramBookTotal);
-	document.CashierHelperCalculator.ProgramBookDisplay.value = NumProgramBook;
-	ProcessTransaction()
-}
-
-function SetProgramBook(dig)
-{
-	NumProgramBook = dig;
-	if (NumProgramBook < 0) {
-		NumProgramBook = 0;
-	}
-	ProgramBookTotal = NumProgramBook*ProgramBookPrice;	
-	Total = AdultTicketTotal+ChildrenTicketTotal+ProgramBookTotal;
-	document.CashierHelperCalculator.TotalDisplay.value = currencyRound(Total);
-	document.CashierHelperCalculator.ProgramBookTotalDisplay.value = currencyRound(ProgramBookTotal);
-	document.CashierHelperCalculator.ProgramBookDisplay.value = NumProgramBook;
-	ProcessTransaction()
-}
 
 <!--------------------------------------------------------------------
-    AdultTicketTotal = 0;
-	ChildrenTicketTotal = 0;
-	ProgramBookTotal = 0;
-	NumAdultTicket = 0;
-	NumChildrenTicket = 0;
-	NumProgramBook = 0;
+	var TicketType = 4;
+	TicketTotal = new Array(TicketType);
+	NumTicket = new Array(TicketType);
+	for (var i = 0; i < TicketType; i++){
+		TicketTotal[i] = 0;
+		NumTicket[i] = 0;
+		}
 	Total  = 0;  
 	MoneyReceived = 0;
 	ChangeReturned = 0;
 	
   //--------------------------------------------------------------->
     // initial prices 
-	AdultTicketPrice = parseInt(document.getElementById("adultprice").value);
-	ChildrenTicketPrice = parseInt(document.getElementById("childrenprice").value);
-	ProgramBookPrice = parseInt(document.getElementById("programprice").value);
+	TicketPrice = [8,6,5,2];
 
 
 function ClearFields() {
-	AdultTicketTotal = 0;
-	ChildrenTicketTotal = 0;
-	ProgramBookTotal = 0;
-	NumAdultTicket = 0;
-	NumChildrenTicket = 0;
-	NumProgramBook = 0;
+	for (var i = 0; i < TicketType; i++){
+		TicketTotal[i] = 0;
+		NumTicket[i] = 0;
+		}
 	Total  = 0;  
 	MoneyReceived = 0;
 	ChangeReturned = 0;
-	AdultTicketPrice = parseInt(document.getElementById("adultprice").value);
-	ChildrenTicketPrice = parseInt(document.getElementById("childrenprice").value);
-	ProgramBookPrice = parseInt(document.getElementById("programprice").value);
-	SetAdultTicket(0);
-	SetChildrenTicket(0);
-	SetProgramBook(0);
+	for (var i = 0; i < TicketType; i++){
+		SetTicket(0,i);}
 	document.getElementById("moneyreceived").value = 0;
 	document.getElementById("changereturned").value = "0.00";
 }
@@ -188,70 +105,89 @@ function AddMoney(m) {
  <table border="6"> 
   <tr>   
     <td colspan="1" style="font-size:90px;"> <font color="blue">Total $</font>
-      <input type="text" style="font-size:90px;" maxlength="6" size="7" name="TotalDisplay" value = 0.00 readonly = "true">
+      <input type="text" style="font-size:90px;" maxlength="6" size="7" name="TotalDisplay"  value = 0.00 readonly = "true">
     </td>
   </tr> 
   <tr>
     <td> 
       <table>
-	  <tr> <span  style="font-size:40px;">Adult ticket:</span> </tr> 
-	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="AdultTicketDisplay" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
+	  <tr> <span  style="font-size:50px;">Adult ticket:</span> </tr> 
+	  <tr> <input style="font-size:50px;" type="text" maxlength="3" size="4" name="TicketDisplay0" id = "ticket0" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
        <tr>
        <tr>
-	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="AdultTicketTotalDisplay" value = 0.00 readonly = "true">
-         <td><input style="font-size:40px;height:50px;width:100px" type="button" value="+" OnClick="AddAdultTicket(1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="-" OnClick="AddAdultTicket(-1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="1" OnClick="SetAdultTicket(1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="2" OnClick="SetAdultTicket(2)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="3" OnClick="SetAdultTicket(3)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="4" OnClick="SetAdultTicket(4)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="5" OnClick="SetAdultTicket(5)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="6" OnClick="SetAdultTicket(6)"></td>
+	   <input style="font-size:50px;" type="text" maxlength="5" size="7" name="TicketTotalDisplay0" id = "tickettotal0" value = 0.00 readonly = "true">
+         <td><input style="font-size:40px;height:60px;width:110px" type="button" value="+" OnClick="AddTicket(1,0)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="-" OnClick="AddTicket(-1,0)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="1" OnClick="SetTicket(1,0)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="2" OnClick="SetTicket(2,0)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="3" OnClick="SetTicket(3,0)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="4" OnClick="SetTicket(4,0)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="5" OnClick="SetTicket(5,0)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="6" OnClick="SetTicket(6,0)"></td>
 	   </tr>
       </table>
 	 </td>
 	</tr>
 	<tr>
-	<td>
-	  <table>
-	  <tr> <span  style="font-size:40px;"> Children ticket: </span></tr> 
-	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ChildrenTicketDisplay" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
+    <td> 
+      <table>
+	  <tr> <span  style="font-size:50px;">Senior or Student:</span> </tr> 
+	  <tr> <input style="font-size:50px;" type="text" maxlength="3" size="4" name="TicketDisplay1" id = "ticket1" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
        <tr>
        <tr>
-	   <input style="font-size:40px;" type="text" maxlength="5" size="7" name="ChildrenTicketTotalDisplay" value = 0.00 readonly = "true">
-         <td><input style="font-size:40px;height:50px;width:100px" type="button" value="+" OnClick="AddChildrenTicket(1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="-" OnClick="AddChildrenTicket(-1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="1" OnClick="SetChildrenTicket(1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="2" OnClick="SetChildrenTicket(2)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="3" OnClick="SetChildrenTicket(3)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="4" OnClick="SetChildrenTicket(4)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="5" OnClick="SetChildrenTicket(5)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="6" OnClick="SetChildrenTicket(6)"></td>
+	   <input style="font-size:50px;" type="text" maxlength="5" size="7" name="TicketTotalDisplay1" id = "tickettotal1" value = 0.00 readonly = "true">
+         <td><input style="font-size:40px;height:60px;width:110px" type="button" value="+" OnClick="AddTicket(1,1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="-" OnClick="AddTicket(-1,1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="1" OnClick="SetTicket(1,1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="2" OnClick="SetTicket(2,1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="3" OnClick="SetTicket(3,1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="4" OnClick="SetTicket(4,1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="5" OnClick="SetTicket(5,1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="6" OnClick="SetTicket(6,1)"></td>
 	   </tr>
       </table>
-    </td>
-    
-  </tr>
-  <tr>
-	<td>
-	  <table>
-	  <tr> <span  style="font-size:40px;"> Program Book: </span> </tr> 
-	  <tr> <input style="font-size:40px;" type="text" maxlength="3" size="4" name="ProgramBookDisplay" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
+	 </td>
+	</tr>
+	<tr>
+    <td> 
+      <table>
+	  <tr> <span  style="font-size:50px;">Senior-Gold Card:</span> </tr> 
+	  <tr> <input style="font-size:50px;" type="text" maxlength="3" size="4" name="TicketDisplay2" id = "ticket2" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
        <tr>
-	   <input style="font-size:40px;"type="text" maxlength="5" size="7" name="ProgramBookTotalDisplay" value = 0.00 readonly = "true">
-         <td><input style="font-size:40px;height:50px;width:100px" type="button" value="+" OnClick="AddProgramBook(1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="-" OnClick="AddProgramBook(-1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="1" OnClick="SetProgramBook(1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="2" OnClick="SetProgramBook(2)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="3" OnClick="SetProgramBook(3)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="4" OnClick="SetProgramBook(4)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="5" OnClick="SetProgramBook(5)"></td>
-		 <td><input style="font-size:40px;height:50px;width:100px" type="button" value="6" OnClick="SetProgramBook(6)"></td>
+       <tr>
+	   <input style="font-size:50px;" type="text" maxlength="5" size="7" name="TicketTotalDisplay2" id = "tickettotal2" value = 0.00 readonly = "true">
+         <td><input style="font-size:40px;height:60px;width:110px" type="button" value="+" OnClick="AddTicket(1,2)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="-" OnClick="AddTicket(-1,2)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="1" OnClick="SetTicket(1,2)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="2" OnClick="SetTicket(2,2)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="3" OnClick="SetTicket(3,2)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="4" OnClick="SetTicket(4,2)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="5" OnClick="SetTicket(5,2)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="6" OnClick="SetTicket(6,2)"></td>
 	   </tr>
       </table>
-    </td>
-    
-  </tr>
+	 </td>
+	</tr><tr>
+    <td> 
+      <table>
+	  <tr> <span  style="font-size:50px;">Program booklet:</span> </tr> 
+	  <tr> <input style="font-size:50px;" type="text" maxlength="3" size="4" name="TicketDisplay3" id = "ticket3" readonly = "true"></tr> <tr> <span  style="font-size:40px;">  $</span></tr>
+       <tr>
+       <tr>
+	   <input style="font-size:50px;" type="text" maxlength="5" size="7" name="TicketTotalDisplay3" id = "tickettotal3" value = 0.00 readonly = "true">
+         <td><input style="font-size:40px;height:60px;width:110px" type="button" value="+" OnClick="AddTicket(1,3)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="-" OnClick="AddTicket(-1,3)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="1" OnClick="SetTicket(1,3)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="2" OnClick="SetTicket(2,3)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="3" OnClick="SetTicket(3,3)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="4" OnClick="SetTicket(4,3)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="5" OnClick="SetTicket(5,3)"></td>
+		 <td><input style="font-size:40px;height:60px;width:110px" type="button" value="6" OnClick="SetTicket(6,3)"></td>
+	   </tr>
+      </table>
+	 </td>
+	</tr>
+	
   
   </table>
   
@@ -265,12 +201,12 @@ function AddMoney(m) {
     
   </tr>  
 <tr>
-         <td><input style="font-size:40px;height:50px;width:180px" type="button" value="Clear" OnClick="ClearMoney()"></td>
-		 <td><input style="font-size:40px;height:50px;width:140px" type="button" value="+1" OnClick="AddMoney(1)"></td>
-		 <td><input style="font-size:40px;height:50px;width:140px" type="button" value="+5" OnClick="AddMoney(5)"></td>
-		 <td><input style="font-size:40px;height:50px;width:140px" type="button" value="+10" OnClick="AddMoney(10)"></td>
-		 <td><input style="font-size:40px;height:50px;width:140px" type="button" value="+20" OnClick="AddMoney(20)"></td>
-		 <td><input style="font-size:40px;height:50px;width:140px" type="button" value="+100" OnClick="AddMoney(100)"></td>
+         <td><input style="font-size:40px;height:60px;width:180px" type="button" value="Clear" OnClick="ClearMoney()"></td>
+		 <td><input style="font-size:40px;height:60px;width:140px" type="button" value="+1" OnClick="AddMoney(1)"></td>
+		 <td><input style="font-size:40px;height:60px;width:140px" type="button" value="+5" OnClick="AddMoney(5)"></td>
+		 <td><input style="font-size:40px;height:60px;width:140px" type="button" value="+10" OnClick="AddMoney(10)"></td>
+		 <td><input style="font-size:40px;height:60px;width:140px" type="button" value="+20" OnClick="AddMoney(20)"></td>
+		 <td><input style="font-size:40px;height:60px;width:140px" type="button" value="+100" OnClick="AddMoney(100)"></td>
 	   </tr>  
   </table>
   </td></tr>
@@ -283,5 +219,5 @@ function AddMoney(m) {
   </table>
   
 </FORM>
-<p><input style="font-size:40px;height:50px;width:320px" type="button" value="CLEAR ALL" OnClick="ClearFields()"></p>
+<p><input style="font-size:40px;height:60px;width:320px" type="button" value="CLEAR ALL" OnClick="ClearFields()"></p>
 
