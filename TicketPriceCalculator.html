@@ -92,7 +92,7 @@ function ClearMoney() {
 	}
 	
 function AddMoney(m) {
-	MoneyReceived = MoneyReceived+m;
+	MoneyReceived += m;
 	document.getElementById("moneyreceived").value = MoneyReceived;
 	ChangeReturned = MoneyReceived - Total;
 	document.getElementById("changereturned").value = currencyRound(ChangeReturned);
